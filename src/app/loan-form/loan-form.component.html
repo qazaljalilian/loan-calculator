@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="container-form" [formGroup]="formGroupName">
+  <form class="container-form" [formGroup]="formGroupName" (ngSubmit)="onSubmit(formGroupName.value)">
     <mat-form-field >
       <input
         matInput
@@ -36,7 +36,7 @@
       <input
         matInput
         placeholder="Loan Term"
-        type=" number"
+        type="number"
         formControlName="loanTerm"
       />
       <mat-hint
@@ -102,3 +102,4 @@
     </div>
   </form>
 </div>
+
