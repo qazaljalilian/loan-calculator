@@ -1,0 +1,17 @@
+.container-form {
+  display : flex;
+  flex-flow: column;
+  padding: 20px;
+  width: 600px;
+}
+
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 100%;
+  text-align: center;
+}
+
+.button {
+  width: 20%;
+  height: 40px;
+}

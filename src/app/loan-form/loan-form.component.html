@@ -1,0 +1,104 @@
+<div class="container">
+  <form class="container-form" [formGroup]="formGroupName">
+    <mat-form-field >
+      <input
+        matInput
+        placeholder="Monthly Income"
+        type="number"
+        formControlName="monthlyIncome"
+      />
+      <mat-error
+        *ngIf="
+          !formGroupName.controls['monthlyIncome'].valid &&
+          formGroupName.controls['monthlyIncome'].touched
+        "
+      >
+        Minimum 500000
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Requested Amount"
+        type="number"
+        formControlName="requestedAmount"
+      />
+      <mat-error
+        *ngIf="
+          !formGroupName.controls['requestedAmount'].valid &&
+          formGroupName.controls['requestedAmount'].touched
+        "
+      >
+        Minimum 20000000
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Loan Term"
+        type=" number"
+        formControlName="loanTerm"
+      />
+      <mat-hint
+        >Term of loan repayment must be between 36 to 360 months</mat-hint
+      >
+      <mat-error
+        *ngIf="
+          !formGroupName.controls['loanTerm'].valid &&
+          formGroupName.controls['loanTerm'].touched
+        "
+      >
+        Term of loan repayment must be between 36 to 360 months
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Children</mat-label>
+      <mat-select formControlName="children">
+        <mat-option
+          *ngFor="let child of children | keyvalue"
+          [value]="child.value"
+        >
+          {{ child.value }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          !formGroupName.controls['children'].valid &&
+          formGroupName.controls['children'].touched
+        "
+      >
+        Please specify
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field f>
+      <mat-label>Coapplicant</mat-label>
+      <mat-select formControlName="coapplicant">
+        <mat-option
+          *ngFor="let applicant of coapplicant | keyvalue"
+          [value]="applicant.value"
+        >
+          {{ applicant.value }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          !formGroupName.controls['coapplicant'].valid &&
+          formGroupName.controls['coapplicant'].touched
+        "
+      >
+        Please specify
+      </mat-error>
+    </mat-form-field>
+    <div class="form-element">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="button"
+        [disabled]="!formGroupName.valid"
+      >
+        Submit Form
+      </button>
+    </div>
+  </form>
+</div>
