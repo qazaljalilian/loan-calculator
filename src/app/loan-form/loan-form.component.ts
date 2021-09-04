@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ConfigService } from '../config.service';
+import { HttpService } from '../http.service';
 import { formData } from './../models/form-data';
 
 @Component({
@@ -14,20 +14,23 @@ export class LoanFormComponent implements OnInit {
   post: any = '';
 
   formGroupName = this._formBuilder.group({
-    monthlyIncome: ['', [Validators.min(500000), Validators.required]],
-    requestedAmount: ['', [Validators.min(20000000), Validators.required]],
-    loanTerm: ['', [Validators.min(36), Validators.max(360),Validators.required]],
+    monthlyIncome: ['', [Validators.min(500.000), Validators.required]],
+    requestedAmount: ['', [Validators.min(20000.000), Validators.required]],
+    loanTerm: [
+      '',
+      [Validators.min(36), Validators.max(360), Validators.required],
+    ],
     children: ['', Validators.required],
     coapplicant: ['', Validators.required],
   });
 
-  constructor(private _formBuilder: FormBuilder,
-    private config:ConfigService) {}
+  constructor(private _formBuilder: FormBuilder, private config: HttpService) {}
 
   ngOnInit(): void {}
-  onSubmit(data: formData ) {
+   onSubmit(data: formData) {
     this.config.submitForm(data);
   }
+
 }
 export enum children {
   NONE = 'none',

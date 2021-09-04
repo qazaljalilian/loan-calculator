@@ -13,7 +13,7 @@
           formGroupName.controls['monthlyIncome'].touched
         "
       >
-        Minimum 500000
+        Minimum 500.000
       </mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -29,7 +29,7 @@
           formGroupName.controls['requestedAmount'].touched
         "
       >
-        Minimum 20000000
+        Minimum 20000.000
       </mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -56,7 +56,7 @@
       <mat-select formControlName="children">
         <mat-option
           *ngFor="let child of children | keyvalue"
-          [value]="child.value"
+          [value]="child.key"
         >
           {{ child.value }}
         </mat-option>
@@ -75,7 +75,7 @@
       <mat-select formControlName="coapplicant">
         <mat-option
           *ngFor="let applicant of coapplicant | keyvalue"
-          [value]="applicant.value"
+          [value]="applicant.key"
         >
           {{ applicant.value }}
         </mat-option>
