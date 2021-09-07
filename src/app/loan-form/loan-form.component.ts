@@ -9,13 +9,13 @@ import { formData } from './../models/form-data';
   styleUrls: ['./loan-form.component.css'],
 })
 export class LoanFormComponent implements OnInit {
-  public children = children;
-  public coapplicant = coapplicant;
+  public children = Children;
+  public coapplicant = Coapplicant;
   post: any = '';
 
   formGroupName = this._formBuilder.group({
-    monthlyIncome: ['', [Validators.min(500.000), Validators.required]],
-    requestedAmount: ['', [Validators.min(20000.000), Validators.required]],
+    monthlyIncome: ['', [Validators.min(500.0), Validators.required]],
+    requestedAmount: ['', [Validators.min(20000.0), Validators.required]],
     loanTerm: [
       '',
       [Validators.min(36), Validators.max(360), Validators.required],
@@ -24,20 +24,29 @@ export class LoanFormComponent implements OnInit {
     coapplicant: ['', Validators.required],
   });
 
-  constructor(private _formBuilder: FormBuilder, private config: HttpService) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private config: HttpService,
+  ) {}
 
   ngOnInit(): void {}
-   onSubmit(data: formData) {
-    this.config.submitForm(data);
+  onSubmit(data: formData) {
+    try {
+      this.config.submitForm(data);
+    } catch (err) {
+      console.log('fucl');
+      window.alert('what the fuuuuuck');
+      this.formGroupName.controls['monthlyIncome'].errors
+    }
   }
 
 }
-export enum children {
+export enum Children {
   NONE = 'none',
   SINGLE = 'single',
   MULTIPLE = 'multiple',
 }
-export enum coapplicant {
+export enum Coapplicant {
   NONE = 'none',
   SINGLE_BORROWER = 'single borrower',
   MULTIPLE_BORROWERS = 'multiple borrowers',
