@@ -13,8 +13,7 @@ export class HttpService {
 
   submitForm(data: formData) {
     let reqHeaders = new HttpHeaders({
-      // 'X-API-KEY': 'swb-222222',
-      'Content-Type': 'text/html'
+      'X-API-KEY': 'swb-222222',
     });
       return this.http.post<any>(this.env, data, {headers: reqHeaders}).toPromise();
   }
