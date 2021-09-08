@@ -11,21 +11,10 @@ export class HttpService {
   private apiKey = 'swb-222222';
   constructor(private http: HttpClient) {}
 
-
   submitForm(data: formData) {
     let reqHeaders = new HttpHeaders({
       'X-API-KEY': 'swb-222222',
     });
-    try {
-      return this.http.post<any>(this.env,
-      data,
-        {
-          headers: reqHeaders
-        }
-      ).toPromise();
-    } catch (err) {
-      console.log(err);
-      throw new Error('there is a problem fuck comment');
-    }
+      return this.http.post<any>(this.env, data, {headers: reqHeaders}).toPromise();
   }
 }
