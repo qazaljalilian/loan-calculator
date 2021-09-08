@@ -32,11 +32,12 @@ export class LoanFormComponent implements OnInit {
   ngOnInit(): void {}
   onSubmit(data: formData) {
     try {
-      this.config.submitForm(data);
+      const res = this.config.fakeSubmitData(data)
+      window.alert(JSON.stringify(res));
     } catch (err) {
-      console.log('fucl');
-      window.alert('what the fuuuuuck');
-      this.formGroupName.controls['monthlyIncome'].errors
+      console.log(err);
+      window.alert(err);
+      this.formGroupName.controls['requestedAmount'].setErrors({'incorrect': true});
     }
   }
 
