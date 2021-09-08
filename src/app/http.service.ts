@@ -18,7 +18,4 @@ export class HttpService {
     });
       return this.http.post<any>(this.env, data, {headers: reqHeaders}).toPromise();
   }
-  fakeSubmitData(data: formData) {
-    throw new Error();
-  }
 }
